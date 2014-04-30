@@ -56,24 +56,7 @@ public class MuPDFViewer extends CordovaPlugin {
         	
             if ( action.equals("openPDF") ) {
             	String fileName = params.getString("fileName");
-            	
-            	if ( fileName.startsWith( FILE_PREFIX ) )
-				{
-            		fileName = fileName.replace( FILE_PREFIX, "" );
-				}
-            	
-            	if ( fileName.contains( ASSET ) )
-            	{
-            		fileName = fileName.replace( "/" + ASSET + "/", "" );
-            		
-            		result = this.openAsset( fileName );
-            	} else {
-            		
-            		fileName = fileName.startsWith("/") ? fileName : "/" + fileName;
-            		fileName = Environment.getExternalStorageDirectory().toString() + fileName;
-            		
-            		result = this.openPDF( fileName );
-				}
+            	result = this.openPDF( fileName );
             	
                 if (result.length() > 0) {
                     status = PluginResult.Status.ERROR;
@@ -165,7 +148,8 @@ public class MuPDFViewer extends CordovaPlugin {
                     Context context = cordova.getActivity().getApplicationContext();
                     Intent intent = new Intent(context, MuPDFActivity.class);
                     intent.setAction( Intent.ACTION_VIEW );
-                    String fileName = Environment.getExternalStorageDirectory().toString() + "/" + path;
+                    //String fileName = Environment.getExternalStorageDirectory().toString() + "/" + path;
+					String fileName = path;
                     Log.d(LOG_TAG, "load: "+fileName);
                     intent.setData( Uri.parse(fileName) );
                     cordova.getActivity().startActivity( intent );

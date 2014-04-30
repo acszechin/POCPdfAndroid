@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import nl.creativeskills.cordovaPlugins.R;
 
 class PatchInfo {
 	public BitmapHolder bmh;
@@ -213,7 +212,7 @@ public abstract class PageView extends ViewGroup {
 		if (mBusyIndicator == null) {
 			mBusyIndicator = new ProgressBar(mContext);
 			mBusyIndicator.setIndeterminate(true);
-			mBusyIndicator.setBackgroundResource(R.drawable.busy);
+			mBusyIndicator.setBackgroundResource(getContext().getResources().getIdentifier("busy","drawable",getContext().getPackageName()));
 			addView(mBusyIndicator);
 		}
 	}
@@ -270,7 +269,7 @@ public abstract class PageView extends ViewGroup {
 				if (mBusyIndicator == null) {
 					mBusyIndicator = new ProgressBar(mContext);
 					mBusyIndicator.setIndeterminate(true);
-					mBusyIndicator.setBackgroundResource(R.drawable.busy);
+					mBusyIndicator.setBackgroundResource(getContext().getResources().getIdentifier("busy","drawable",getContext().getPackageName()));
 					addView(mBusyIndicator);
 					mBusyIndicator.setVisibility(INVISIBLE);
 					mHandler.postDelayed(new Runnable() {

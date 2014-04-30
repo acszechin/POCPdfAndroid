@@ -43,7 +43,6 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
-import nl.creativeskills.cordovaPlugins.R;
 
 class ThreadPerTaskExecutor implements Executor {
 	public void execute(Runnable r) {
@@ -278,8 +277,8 @@ public class MuPDFActivity extends Activity
 								buffer = null;
 								Resources res = getResources();
 								AlertDialog alert = mAlertBuilder.create();
-								String contentFailure = res.getString(R.string.content_failure);
-								String openFailed = res.getString(R.string.open_failed);
+								String contentFailure = res.getString(getApplication().getResources().getIdentifier("content_failure","string",getApplication().getPackageName()));//res.getString(R.string.content_failure);
+								String openFailed = res.getString(getApplication().getResources().getIdentifier("open_failed","string",getApplication().getPackageName()));
 								setTitle(String.format(contentFailure, openFailed, failString));
 								alert.setButton(AlertDialog.BUTTON_POSITIVE, "Dismiss",
 										new DialogInterface.OnClickListener() {
@@ -310,7 +309,7 @@ public class MuPDFActivity extends Activity
 		if (core == null)
 		{
 			AlertDialog alert = mAlertBuilder.create();
-			alert.setTitle(R.string.open_failed);
+			alert.setTitle(getApplication().getResources().getIdentifier("open_failed","string",getApplication().getPackageName()));
 			alert.setButton(AlertDialog.BUTTON_POSITIVE, "Dismiss",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
@@ -330,7 +329,7 @@ public class MuPDFActivity extends Activity
 		mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
 
 		AlertDialog alert = mAlertBuilder.create();
-		alert.setTitle(R.string.enter_password);
+		alert.setTitle(getApplication().getResources().getIdentifier("enter_password","string",getApplication().getPackageName()));
 		alert.setView(mPasswordView);
 		alert.setButton(AlertDialog.BUTTON_POSITIVE, "Ok",
 				new DialogInterface.OnClickListener() {
@@ -402,7 +401,7 @@ public class MuPDFActivity extends Activity
 		RelativeLayout layout = new RelativeLayout(this);
 		layout.addView(mDocView);
 		layout.addView(mButtonsView);
-		layout.setBackgroundResource(R.drawable.tiled_background);
+		layout.setBackgroundResource(getApplication().getResources().getIdentifier("tiled_background","drawable",getApplication().getPackageName()));
 		//layout.setBackgroundResource(R.color.canvas);
 		setContentView(layout);
 	}
@@ -471,10 +470,14 @@ public class MuPDFActivity extends Activity
 
 
 	void makeButtonsView() {
-		mButtonsView = getLayoutInflater().inflate(R.layout.buttons,null);
-		mFilenameView = (TextView)mButtonsView.findViewById(R.id.docNameText);
-		mInfoView = (TextView)mButtonsView.findViewById(R.id.info);
-		mButtonClose = (Button)mButtonsView.findViewById(R.id.closeBtn);
+		mButtonsView = getLayoutInflater().inflate(getApplication().getResources().getIdentifier("buttons","layout",getApplication().getPackageName()),null);
+		System.out.println("mButtonsView: " + mButtonsView);
+		mFilenameView = (TextView)mButtonsView.findViewById(getApplication().getResources().getIdentifier("docNameText","id",getApplication().getPackageName()));
+		System.out.println("mFilenameView: " + mFilenameView);
+		mInfoView = (TextView)mButtonsView.findViewById(getApplication().getResources().getIdentifier("info","id",getApplication().getPackageName()));
+		System.out.println("mInfoView: " + mInfoView);
+		mButtonClose = (Button)mButtonsView.findViewById( getApplication().getResources().getIdentifier("closeBtn","id",getApplication().getPackageName()));
+		System.out.println("mButtonClose: " + mButtonClose);
 		mInfoView.setVisibility(View.INVISIBLE);
 	} 
 

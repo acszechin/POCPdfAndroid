@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
 import android.widget.EditText;
-import nl.creativeskills.cordovaPlugins.R;
 
 abstract class PassClickResultVisitor {
 	public abstract void visitText(PassClickResultText result);
@@ -75,7 +74,7 @@ public class MuPDFPageView extends PageView implements MuPDFView {
 		mTextEntryBuilder = new AlertDialog.Builder(c);
 		mTextEntryBuilder.setTitle("MuPDF: fill out text field");
 		LayoutInflater inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mEditText = (EditText)inflater.inflate(R.layout.textentry, null);
+		mEditText = (EditText)inflater.inflate(getContext().getResources().getIdentifier("textentry","layout",getContext().getPackageName()), null);
 		mTextEntryBuilder.setView(mEditText);
 		mTextEntryBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {

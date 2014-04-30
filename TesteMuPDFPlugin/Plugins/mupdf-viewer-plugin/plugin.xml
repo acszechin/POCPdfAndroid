@@ -13,8 +13,6 @@
 		<config-file parent="/*" target="AndroidManifest.xml"/>
 
 		<source-file src="src/android/nl/creativeskills/cordovaPlugins/MuPDFViewer.java" target-dir="src/nl/creativeskills/cordovaPlugins/"/>
-		<source-file src="src/android/nl/creativeskills/cordovaPlugins/R.java" target-dir="src/nl/creativeskills/cordovaPlugins/"/>
-		<source-file src="src/android/nl/creativeskills/cordovaPlugins/BuildConfig.java" target-dir="src/nl/creativeskills/cordovaPlugins/"/>
 
 		<source-file src="src/android/nl/creativeskills/mupdf/AsyncTask.java" target-dir="src/nl/creativeskills/mupdf/"/>
 		<source-file src="src/android/nl/creativeskills/mupdf/BitmapHolder.java" target-dir="src/nl/creativeskills/mupdf/"/>

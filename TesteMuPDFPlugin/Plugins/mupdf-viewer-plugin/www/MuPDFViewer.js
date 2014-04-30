@@ -1,5 +1,5 @@
 var exec = require('cordova/exec');
 
-exports.coolMethod = function(arg0, success, error) {
-    exec(success, error, "MuPDFViewer", "coolMethod", [arg0]);
+exports.openPDF = function(path) {
+    exec(null, function(){console.log("erro");}, "MuPDFViewer", "openPDF", [ { fileName: path } ]);
 };
