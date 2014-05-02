@@ -70,6 +70,7 @@ public class MuPDFActivity extends Activity
 	//private boolean mReflow = false;
 	private AsyncTask<Void,Void,MuPDFAlert> mAlertTask;
 	private AlertDialog mAlertDialog;
+	private String passPdf;
 
 	public void createAlertWaiter() {
 		mAlertsActive = true;
@@ -247,6 +248,7 @@ public class MuPDFActivity extends Activity
 			Intent intent = getIntent();
 			byte buffer[] = null;
 			if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+				passPdf = intent.getExtras().getString("senha");
 				Uri uri = intent.getData();
 				if (uri.toString().startsWith("content://")) {
 					// Handle view requests from the Transformer Prime's file manager
@@ -302,7 +304,9 @@ public class MuPDFActivity extends Activity
 				SearchTaskResult.set(null);
 			}
 			if (core != null && core.needsPassword()) {
-				requestPassword(savedInstanceState);
+				//requestPassword(savedInstanceState);
+				core.authenticatePassword(passPdf);
+				createUI(savedInstanceState);
 				return;
 			}
 		}

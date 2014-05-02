@@ -56,7 +56,9 @@ public class MuPDFViewer extends CordovaPlugin {
         	
             if ( action.equals("openPDF") ) {
             	String fileName = params.getString("fileName");
-            	result = this.openPDF( fileName );
+				String pass = params.getString("pass");
+
+            	result = this.openPDF( fileName, pass );
             	
                 if (result.length() > 0) {
                     status = PluginResult.Status.ERROR;
@@ -112,7 +114,7 @@ public class MuPDFViewer extends CordovaPlugin {
             // change uri to be to the new file in internal storage
             filePath = FILE_PREFIX + this.cordova.getActivity().getFilesDir() + "/" + filename;
             
-            result = this.openPDF( filePath );
+            //result = this.openPDF( filePath, pass );
             
             return result;
 
@@ -139,7 +141,7 @@ public class MuPDFViewer extends CordovaPlugin {
      * @param path           The path to load.
      * @return               "" if ok, or error message.
      */
-    public String openPDF(final String path) {
+    public String openPDF(final String path, final String pass) {
         try {
         	
         	cordova.getThreadPool().execute(new Runnable() {
@@ -151,6 +153,7 @@ public class MuPDFViewer extends CordovaPlugin {
                     //String fileName = Environment.getExternalStorageDirectory().toString() + "/" + path;
 					String fileName = path;
                     Log.d(LOG_TAG, "load: "+fileName);
+					intent.putExtra("senha", pass);
                     intent.setData( Uri.parse(fileName) );
                     cordova.getActivity().startActivity( intent );
                 }
