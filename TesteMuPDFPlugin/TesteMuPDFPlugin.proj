@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>c1355510-4ff2-4062-8530-887268e7626f</ProjectGuid>
     <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
-    <AppIdentifier>com.telerik.TesteMuPDFPlugin</AppIdentifier>
+    <AppIdentifier>br.com.knowlodge.POCPdfViewer</AppIdentifier>
     <ProjectName>TesteMuPDFPlugin</ProjectName>
     <IsRunnable>true</IsRunnable>
     <FrameworkVersion>3.2.0</FrameworkVersion>
@@ -14,9 +14,9 @@
     <AndroidHardwareAcceleration>false</AndroidHardwareAcceleration>
     <WP8SupportedResolutions>ID_RESOLUTION_WVGA;ID_RESOLUTION_WXGA;ID_RESOLUTION_HD720P</WP8SupportedResolutions>
     <BundleVersion>1.0</BundleVersion>
-    <DisplayName />
+    <DisplayName>POCPdfViewer</DisplayName>
     <Author />
-    <Description>TesteMuPDFPlugin</Description>
+    <Description>POCPdfViewer</Description>
     <iOSDeviceFamily>1;2</iOSDeviceFamily>
     <iOSBackgroundMode />
     <AndroidVersionCode>1</AndroidVersionCode>
